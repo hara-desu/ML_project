@@ -44,7 +44,7 @@ class InDataset(BaseModel):
 
 loadedModel = load_model("./model_b_weights.h5")
 
-@app.post("/predictdl", status_code=200)
+@app.post("/predict", status_code=200)
 async def predictDl(x:InDataset):
     try:
         # 화면입력데이터 변수 할당

@@ -26,10 +26,10 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
     <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">예측#1</a>
+        <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">Prediction</a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link" id="analysis-tab" data-toggle="tab" href="#analysis" role="tab" aria-controls="analysis" aria-selected="false">예측#2</a>
+        <a class="nav-link" id="analysis-tab" data-toggle="tab" href="#analysis" role="tab" aria-controls="analysis" aria-selected="false">Performance</a>
     </li>
 </ul>
 
@@ -144,7 +144,7 @@
 <script>
 
     // config.json 파일 로드
-    var newHostname = "13.51.174.29";
+    var newHostname = "16.16.182.225";
     var newPort = "9999"
 
       // 분석시작 버튼 클릭 시 분석서버와 연계 코드
@@ -161,7 +161,7 @@
 
         let urlBase = `http://${newHostname}:${newPort}`;
 
-        let urlFullBase = urlBase+"/predictBase";
+        let urlFullBase = urlBase+"/predict";
 
         let reqDataBase = {
           'year': year,
@@ -189,7 +189,7 @@
           success: function(data) {
             console.log(data);
             // $('#input4').text(${data.result});
-            $("#baseResult").append(`<div> year: ${year} region: ${region} family_member: ${family_member} gender: ${gender} year_born: ${year_born} education_level: ${education_level} marriage: ${marriage} religion: ${religion}=> ${data.result}]</div>`);
+            $("#baseResult").append(`<div> year: ${year} region: ${region} family_member: ${family_member} gender: ${gender} year_born: ${year_born} education_level: ${education_level} marriage: ${marriage} religion: ${religion}=> ${data.prediction}]</div>`);
           }
         });
       });
