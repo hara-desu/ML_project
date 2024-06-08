@@ -44,12 +44,11 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="mb-3 text-center" style="font-size: 20px;"  > 예측 페이지 #1 </h1>
+                    <h1 class="mb-3 text-center" style="font-size: 20px;"> Prediction </h1>
                     <br>
                                         <!-- Add the image here -->
                     <div id="imageContainer">
-                        <label> {특성} 값 입력 시 {라벨}값을 예측합니다. </label>
-                        <label> ['year', 'region', 'family_member', 'gender', 'year_born', 'education_level', 'marriage', 'religion'] </label>
+                        <label> Predict if your income is below or above the historic average in Korea. </label>
                         <img src="/images/sample_anal_page.png" alt="slab_predict.png" class="img-fluid">
                     </div>
                     <br>
@@ -57,40 +56,40 @@
 
                         <div class="form-group">
                             <label for="input1">Year </label>
-                            <input type="text" class="form-control" id="year" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="year" placeholder="Enter value">
                         </div>
                         <div class="form-group">
                             <label for="input1">Region </label>
-                            <input type="text" class="form-control" id="region" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="region" placeholder="Enter value">
                         </div>
                         <div class="form-group">
                             <label for="input1">Family member </label>
-                            <input type="text" class="form-control" id="family_member" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="family_member" placeholder="Enter value">
                         </div>
                         <div class="form-group">
                             <label for="input1">Gender</label>
-                            <input type="text" class="form-control" id="gender" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="gender" placeholder="Enter value">
                         </div>
                         <div class="form-group">
                             <label for="input2">Year born</label>
-                            <input type="text" class="form-control" id="year_born" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="year_born" placeholder="Enter value">
                         </div>
                          <div class="form-group">
                             <label for="input3">Education level</label>
-                            <input type="text" class="form-control" id="education_level" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="education_level" placeholder="Enter value">
                         </div>
                         <div class="form-group">
                             <label for="input4">Marriage</label>
-                            <input type="text" class="form-control" id="marriage" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="marriage" placeholder="Enter value">
                         </div>
                         <div class="form-group">
                             <label for="input4">Religion</label>
-                            <input type="text" class="form-control" id="religion" placeholder="값을 입력하세요">
+                            <input type="text" class="form-control" id="religion" placeholder="Enter value">
                         </div>
 
-                        <button type="button" class="btn btn-success btn-block" id="downloadBtn1">샘플데이터 다운로드</button>
+                        <button type="button" class="btn btn-success btn-block" id="downloadBtn1">Download sample data</button>
                         <br>
-                        <button type="button" class="btn btn-primary btn-block" id="prdBtn">분석 시작</button>
+                        <button type="button" class="btn btn-primary btn-block" id="prdBtn">Predict</button>
                         <div id=baseResult></div>
         <!--                 <div class="form-group">
                             <label id="input4">예측결과 </label>
@@ -107,7 +106,7 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="mb-3 text-center" style="font-size: 20px;"  > 예측 페이지 #2 </h1>
+                    <h1 class="mb-3 text-center" style="font-size: 20px;"> Performance </h1>
                     <label>준비중</label>
                     <div class="mt-4" id="result"></div>
                 </div>
@@ -133,8 +132,8 @@
 <script>
     document.getElementById('downloadBtn1').addEventListener('click', function() {
         var link = document.createElement("a");
-        link.href = "/datas/slab_predict_sample.xlsx"; // 다운로드할 파일의 경로
-        link.download = "slab_predict_sample.xlsx"; // 다운로드될 파일의 이름
+        link.href = "/datas/korean_income.csv"; // 다운로드할 파일의 경로
+        link.download = "korean_income.csv"; // 다운로드될 파일의 이름
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
