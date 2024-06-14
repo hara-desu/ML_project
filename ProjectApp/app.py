@@ -72,9 +72,9 @@ async def predictDl(x:InDataset):
         predictValue = loadedModel.predict(testData)
         for _ in predictValue[0]:
             if _ == np.argmax(predictValue):
-                result = "0: Income less than average of 3441"
+                result = {"prediction": "Your income should be below average."}
             else:
-                result = "1: Income more than average of 3441"
+                result = {"prediction": "Your income should be above average"}
                 break
     except Exception as e:
         print(e)

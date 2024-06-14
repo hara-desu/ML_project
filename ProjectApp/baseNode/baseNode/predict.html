@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="display-6"> MiniProject </h1>
+                <h1 class="display-6"> Income prediction </h1>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
         <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">Prediction</a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link" id="analysis-tab" data-toggle="tab" href="#analysis" role="tab" aria-controls="analysis" aria-selected="false">Performance</a>
+        <a class="nav-link" id="analysis-tab" data-toggle="tab" href="#analysis" role="tab" aria-controls="analysis" aria-selected="false">Performance and feature description</a>
     </li>
 </ul>
 
@@ -44,47 +44,48 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="mb-3 text-center" style="font-size: 20px;"> Prediction </h1>
                     <br>
                                         <!-- Add the image here -->
                     <div id="imageContainer">
-                        <label> Predict if your income is below or above the historic average in Korea. </label>
+                        <h4>Should your income be above or below the average Korean income?</h4>
+			<p>(Average Korean income is 3441 Million KRW)</p>
                         <img src="/images/sample_anal_page.png" alt="slab_predict.png" class="img-fluid">
                     </div>
                     <br>
+		    <p style="font-weight:bold">Please, enter information about yourself. You can see each field's description on "Performance and feature description" page.</p>
                     <form>
 
                         <div class="form-group">
                             <label for="input1">Year </label>
-                            <input type="text" class="form-control" id="year" placeholder="Enter value">
+                            <input type="text" class="form-control" id="year" placeholder="Enter value in range 2005~2018">
                         </div>
                         <div class="form-group">
                             <label for="input1">Region </label>
-                            <input type="text" class="form-control" id="region" placeholder="Enter value">
+                            <input type="text" class="form-control" id="region" placeholder="Enter value in range 1~7">
                         </div>
                         <div class="form-group">
                             <label for="input1">Family member </label>
-                            <input type="text" class="form-control" id="family_member" placeholder="Enter value">
+                            <input type="text" class="form-control" id="family_member" placeholder="Enter value in range 1~9">
                         </div>
                         <div class="form-group">
                             <label for="input1">Gender</label>
-                            <input type="text" class="form-control" id="gender" placeholder="Enter value">
+                            <input type="text" class="form-control" id="gender" placeholder="Enter value in range 1~2">
                         </div>
                         <div class="form-group">
                             <label for="input2">Year born</label>
-                            <input type="text" class="form-control" id="year_born" placeholder="Enter value">
+                            <input type="text" class="form-control" id="year_born" placeholder="Enter value in range 1910~2002">
                         </div>
                          <div class="form-group">
                             <label for="input3">Education level</label>
-                            <input type="text" class="form-control" id="education_level" placeholder="Enter value">
+                            <input type="text" class="form-control" id="education_level" placeholder="Enter value in range 2~9">
                         </div>
                         <div class="form-group">
                             <label for="input4">Marriage</label>
-                            <input type="text" class="form-control" id="marriage" placeholder="Enter value">
+                            <input type="text" class="form-control" id="marriage" placeholder="Enter value in range 0~9">
                         </div>
                         <div class="form-group">
                             <label for="input4">Religion</label>
-                            <input type="text" class="form-control" id="religion" placeholder="Enter value">
+                            <input type="text" class="form-control" id="religion" placeholder="Enter value 1, 2 or 9">
                         </div>
 
                         <button type="button" class="btn btn-success btn-block" id="downloadBtn1">Download sample data</button>
@@ -106,9 +107,25 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="mb-3 text-center" style="font-size: 20px;"> Performance </h1>
-                    <label>준비중</label>
-                    <div class="mt-4" id="result"></div>
+		    <div>
+			    <h2>Input feature description</h2>
+				<ol>
+  					<li>Year: study conducted</li>
+					<li>Region: 1) Seoul 2) Kyeong-gi 3) Kyoung-nam 4) Kyoung-buk 5) Chung-nam 6) Gang-won and Chung-buk 7) Jeolla and Jeju</li>
+  					<li>Family_member: no. of family members</li>
+					<li>Gender: 1) male 2) female</li>
+					<li>Year Born: birth year</li>
+					<li>Education level: 1) no education(under 7 yrs-old) 2) no - education(7 and over 7 yrs-old) 3) elementary 4) middle school 5) high school 6) college 7) university degree 8) MA 9) doctoral degree</li>
+					<li>Marriage: marital status. 1) not applicable (under 18) 2) married 3) separated by death 4) separated 5) not married yet 6) others</li>
+					<li>Religion: 1) have religion 2) do not have</li>
+				</ol>
+		    </div>
+                    <div id="imageContainer">
+			    <div id="imageContainer">
+				    <h2> Deep learning model performance by epoch. </h2>
+				    <img src="/images/performance_graph.png" alt="performance.png" class="img-fluid">
+			    </div>
+		    <div class="mt-4" id="result"></div>
                 </div>
             </div>
         </div>
@@ -144,7 +161,7 @@
 <script>
 
     // config.json 파일 로드
-    var newHostname = "16.16.182.225";
+    var newHostname = "51.20.129.189";
     var newPort = "9999"
 
       // 분석시작 버튼 클릭 시 분석서버와 연계 코드
@@ -189,7 +206,7 @@
           success: function(data) {
             console.log(data);
             // $('#input4').text(${data.result});
-            $("#baseResult").append(`<div> year: ${year} region: ${region} family_member: ${family_member} gender: ${gender} year_born: ${year_born} education_level: ${education_level} marriage: ${marriage} religion: ${religion}=> ${data.prediction}]</div>`);
+			  $("#baseResult").append(`<div class="container pt-3 border margin: 35px" style="margin-top: 20px;"><h3>${data.prediction}</h3></div>`);
           }
         });
       });
